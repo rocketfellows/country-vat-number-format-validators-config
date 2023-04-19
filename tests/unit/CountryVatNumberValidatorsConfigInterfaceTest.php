@@ -5,6 +5,7 @@ namespace rocketfellows\CountryVatNumberFormatValidatorsConfig\tests\unit;
 use arslanimamutdinov\ISOStandard3166\Country;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
+use rocketfellows\CountryVatNumberFormatValidatorsConfig\CountryVatNumberFormatValidatorsConfigInterface;
 
 abstract class CountryVatNumberValidatorsConfigInterfaceTest extends TestCase
 {
