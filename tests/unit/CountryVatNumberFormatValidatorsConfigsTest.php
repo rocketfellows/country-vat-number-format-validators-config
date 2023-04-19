@@ -122,6 +122,38 @@ class CountryVatNumberFormatValidatorsConfigsTest extends TestCase
                     new ThirdRUVatNumberValidator(),
                 ],
             ],
+            [
+                'countriesConfigs' => new CountryVatNumberFormatValidatorsConfigs(
+                    $this->getCountryVatNumberFormatValidatorsConfigMock([
+                        'country' => $this->getCountryMock([
+                            'alpha2' => 'RU',
+                        ]),
+                        'validators' => new CountryVatFormatValidators(),
+                    ]),
+                    $this->getCountryVatNumberFormatValidatorsConfigMock([
+                        'country' => $this->getCountryMock([
+                            'alpha2' => 'DE',
+                        ]),
+                        'validators' => new CountryVatFormatValidators(
+                            new FirstDEVatNumberValidator(),
+                            new SecondDEVatNumberValidator(),
+                            new ThirdDEVatNumberValidator(),
+                        ),
+                    ]),
+                    $this->getCountryVatNumberFormatValidatorsConfigMock([
+                        'country' => $this->getCountryMock([
+                            'alpha2' => 'AT',
+                        ]),
+                        'validators' => new CountryVatFormatValidators(
+                            new FirstATVatNumberValidator(),
+                            new SecondATVatNumberValidator(),
+                            new ThirdATVatNumberValidator(),
+                        ),
+                    ]),
+                ),
+                'givenCountry' => $this->getCountryMock(['alpha2' => 'RU',]),
+                'expectedValidators' => [],
+            ],
         ];
     }
 
