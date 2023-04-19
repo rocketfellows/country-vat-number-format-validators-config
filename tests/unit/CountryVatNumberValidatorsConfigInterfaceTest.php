@@ -23,7 +23,8 @@ abstract class CountryVatNumberValidatorsConfigInterfaceTest extends TestCase
     }
 
     /**
-     * @return Country|MockObject
+     * @param array $params
+     * @return Country
      */
     protected function getCountryMock(array $params = []): Country
     {
