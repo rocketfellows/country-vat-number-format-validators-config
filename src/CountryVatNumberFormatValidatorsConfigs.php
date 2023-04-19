@@ -34,20 +34,13 @@ class CountryVatNumberFormatValidatorsConfigs extends Tuple
                 continue;
             }
 
-            foreach ($config->getValidators() as $validator) {
-                if ($this->isExistValidatorInGivenArray($foundValidators, $validator)) {
-                    continue;
-                }
-
-                $foundValidators[] = $validator;
-            }
+            $this->collectUniqueValidators($foundValidators, $config->getValidators());
         }
 
-        return !empty($foundValidators) ?
-            new CountryVatFormatValidators(...$foundValidators) : new CountryVatFormatValidators();
+        return $this->getValidatorsTuple($foundValidators);
     }
 
-    public function getValidatorsByCountryCode(string $countryCode): ?CountryVatFormatValidators
+    public function getValidatorsByCountryCode(string $countryCode): CountryVatFormatValidators
     {
         /** @var CountryVatFormatValidatorInterface[] $foundValidators */
         $foundValidators = [];
@@ -62,17 +55,25 @@ class CountryVatNumberFormatValidatorsConfigs extends Tuple
                 continue;
             }
 
-            foreach ($config->getValidators() as $validator) {
-                if ($this->isExistValidatorInGivenArray($foundValidators, $validator)) {
-                    continue;
-                }
-
-                $foundValidators[] = $validator;
-            }
+            $this->collectUniqueValidators($foundValidators, $config->getValidators());
         }
 
-        return !empty($foundValidators) ?
-            new CountryVatFormatValidators(...$foundValidators) : new CountryVatFormatValidators();
+        return $this->getValidatorsTuple($foundValidators);
+    }
+
+    /**
+     * @param CountryVatFormatValidatorInterface[] $foundValidators
+     * @param CountryVatFormatValidators $validators
+     */
+    private function collectUniqueValidators(array &$foundValidators, CountryVatFormatValidators $validators): void
+    {
+        foreach ($validators as $validator) {
+            if ($this->isExistValidatorInGivenArray($foundValidators, $validator)) {
+                continue;
+            }
+
+            $foundValidators[] = $validator;
+        }
     }
 
     /**
@@ -91,5 +92,15 @@ class CountryVatNumberFormatValidatorsConfigs extends Tuple
         }
 
         return false;
+    }
+
+    /**
+     * @param CountryVatFormatValidatorInterface[] $validatorsArray
+     * @return CountryVatFormatValidators
+     */
+    private function getValidatorsTuple(array $validatorsArray = []): CountryVatFormatValidators
+    {
+        return !empty($validatorsArray) ?
+            new CountryVatFormatValidators(...$validatorsArray) : new CountryVatFormatValidators();
     }
 }
