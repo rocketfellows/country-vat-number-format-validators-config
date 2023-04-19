@@ -26,7 +26,7 @@ class CountryVatNumberFormatValidatorsConfigs extends Tuple
 
     public function getCountryValidators(Country $country): CountryVatFormatValidators
     {
-        /** @var CountryVatFormatValidatorInterface $findValidators */
+        /** @var CountryVatFormatValidatorInterface[] $foundValidators */
         $foundValidators = [];
 
         foreach ($this->data as $config) {
@@ -49,12 +49,13 @@ class CountryVatNumberFormatValidatorsConfigs extends Tuple
 
     public function getValidatorsByCountryCode(string $countryCode): ?CountryVatFormatValidators
     {
-        /** @var CountryVatFormatValidatorInterface $findValidators */
+        /** @var CountryVatFormatValidatorInterface[] $foundValidators */
         $foundValidators = [];
         $formattedCountryCode = strtoupper($countryCode);
 
         foreach ($this->data as $config) {
-            if ((strtoupper($config->getCountry()->getAlpha2()) !== $formattedCountryCode) &&
+            if (
+                (strtoupper($config->getCountry()->getAlpha2()) !== $formattedCountryCode) &&
                 (strtoupper($config->getCountry()->getAlpha3()) !== $formattedCountryCode) &&
                 (strtoupper($config->getCountry()->getNumericCode()) !== $formattedCountryCode)
             ) {
