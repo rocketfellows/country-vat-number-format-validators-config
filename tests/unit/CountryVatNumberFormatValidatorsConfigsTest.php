@@ -8,6 +8,7 @@ use PHPUnit\Framework\TestCase;
 use rocketfellows\CountryVatFormatValidatorInterface\CountryVatFormatValidatorInterface;
 use rocketfellows\CountryVatFormatValidatorInterface\CountryVatFormatValidators;
 use rocketfellows\CountryVatNumberFormatValidatorsConfig\CountryVatNumberFormatValidatorsConfigInterface;
+use rocketfellows\CountryVatNumberFormatValidatorsConfig\CountryVatNumberFormatValidatorsConfigs;
 use rocketfellows\tuple\Tuple;
 
 class CountryVatNumberFormatValidatorsConfigsTest extends TestCase
