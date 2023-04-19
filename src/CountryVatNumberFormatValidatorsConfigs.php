@@ -34,14 +34,20 @@ class CountryVatNumberFormatValidatorsConfigs extends Tuple
                 continue;
             }
 
-            $this->collectUniqueValidators($foundValidators, $config->getValidators());
+            foreach ($config->getValidators() as $validator) {
+                if ($this->isExistValidatorInGivenArray($foundValidators, $validator)) {
+                    continue;
+                }
+
+                $foundValidators[] = $validator;
+            }
         }
 
         return !empty($foundValidators) ?
             new CountryVatFormatValidators(...$foundValidators) : new CountryVatFormatValidators();
     }
 
-    public function getValidatorsByCountryCode(string $countryCode): CountryVatFormatValidators
+    public function getValidatorsByCountryCode(string $countryCode): ?CountryVatFormatValidators
     {
         /** @var CountryVatFormatValidatorInterface[] $foundValidators */
         $foundValidators = [];
@@ -56,26 +62,17 @@ class CountryVatNumberFormatValidatorsConfigs extends Tuple
                 continue;
             }
 
-            $this->collectUniqueValidators($foundValidators, $config->getValidators());
+            foreach ($config->getValidators() as $validator) {
+                if ($this->isExistValidatorInGivenArray($foundValidators, $validator)) {
+                    continue;
+                }
+
+                $foundValidators[] = $validator;
+            }
         }
 
         return !empty($foundValidators) ?
             new CountryVatFormatValidators(...$foundValidators) : new CountryVatFormatValidators();
-    }
-
-    /**
-     * @param CountryVatFormatValidatorInterface[] $foundValidators
-     * @param CountryVatFormatValidators $validators
-     */
-    private function collectUniqueValidators(array &$foundValidators, CountryVatFormatValidators $validators): void
-    {
-        foreach ($validators as $validator) {
-            if ($this->isExistValidatorInGivenArray($foundValidators, $validator)) {
-                continue;
-            }
-
-            $foundValidators[] = $validator;
-        }
     }
 
     /**
