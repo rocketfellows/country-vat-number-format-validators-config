@@ -47,6 +47,11 @@ class CountryVatNumberFormatValidatorsConfigsTest extends TestCase
     {
         return [
             [
+                'countriesConfigs' => new CountryVatNumberFormatValidatorsConfigs(),
+                'givenCountry' => $this->getCountryMock(['alpha2' => 'RU',]),
+                'expectedValidators' => [],
+            ],
+            [
                 'countriesConfigs' => new CountryVatNumberFormatValidatorsConfigs(
                     $this->getCountryVatNumberFormatValidatorsConfigMock([
                         'country' => $this->getCountryMock([
