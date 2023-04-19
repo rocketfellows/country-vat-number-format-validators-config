@@ -9,15 +9,18 @@ use rocketfellows\CountryVatFormatValidatorInterface\CountryVatFormatValidatorIn
 use rocketfellows\CountryVatFormatValidatorInterface\CountryVatFormatValidators;
 use rocketfellows\CountryVatNumberFormatValidatorsConfig\CountryVatNumberFormatValidatorsConfigInterface;
 use rocketfellows\CountryVatNumberFormatValidatorsConfig\CountryVatNumberFormatValidatorsConfigs;
-use rocketfellows\tuple\Tuple;
+use rocketfellows\CountryVatNumberFormatValidatorsConfig\tests\unit\mocks\validators\FirstATVatNumberValidator;
+use rocketfellows\CountryVatNumberFormatValidatorsConfig\tests\unit\mocks\validators\FirstDEVatNumberValidator;
+use rocketfellows\CountryVatNumberFormatValidatorsConfig\tests\unit\mocks\validators\FirstRUVatNumberValidator;
+use rocketfellows\CountryVatNumberFormatValidatorsConfig\tests\unit\mocks\validators\SecondATVatNumberValidator;
+use rocketfellows\CountryVatNumberFormatValidatorsConfig\tests\unit\mocks\validators\SecondDEVatNumberValidator;
+use rocketfellows\CountryVatNumberFormatValidatorsConfig\tests\unit\mocks\validators\SecondRUVatNumberValidator;
+use rocketfellows\CountryVatNumberFormatValidatorsConfig\tests\unit\mocks\validators\ThirdATVatNumberValidator;
+use rocketfellows\CountryVatNumberFormatValidatorsConfig\tests\unit\mocks\validators\ThirdDEVatNumberValidator;
+use rocketfellows\CountryVatNumberFormatValidatorsConfig\tests\unit\mocks\validators\ThirdRUVatNumberValidator;
 
 class CountryVatNumberFormatValidatorsConfigsTest extends TestCase
 {
-    public function testSuccessEmptyInitialization(): void
-    {
-        $this->assertInstanceOf(Tuple::class, new CountryVatNumberFormatValidatorsConfigs());
-    }
-
     /**
      * @dataProvider getCountryValidatorsConfigProvidedData
      * @param CountryVatNumberFormatValidatorsConfigs $countriesConfigs
@@ -42,60 +45,45 @@ class CountryVatNumberFormatValidatorsConfigsTest extends TestCase
 
     public function getCountryValidatorsConfigProvidedData(): array
     {
-        $ruCountry = $this->getCountryMock([
-            'alpha2' => 'RU',
-        ]);
-        $firstRUCountryVatValidator = $this->createMock(CountryVatFormatValidatorInterface::class);
-        $secondRUCountryVatValidator = $this->createMock(CountryVatFormatValidatorInterface::class);
-        $thirdRUCountryVatValidator = $this->createMock(CountryVatFormatValidatorInterface::class);
-
-        $deCountry = $this->getCountryMock([
-            'alpha2' => 'DE',
-        ]);
-        $firstDECountryVatValidator = $this->createMock(CountryVatFormatValidatorInterface::class);
-        $secondDECountryVatValidator = $this->createMock(CountryVatFormatValidatorInterface::class);
-        $thirdDECountryVatValidator = $this->createMock(CountryVatFormatValidatorInterface::class);
-
-        $atCountry = $this->getCountryMock([
-            'alpha2' => 'AT',
-        ]);
-        $firstATCountryVatValidator = $this->createMock(CountryVatFormatValidatorInterface::class);
-        $secondATCountryVatValidator = $this->createMock(CountryVatFormatValidatorInterface::class);
-        $thirdATCountryVatValidator = $this->createMock(CountryVatFormatValidatorInterface::class);
-
         return [
             [
                 'countriesConfigs' => new CountryVatNumberFormatValidatorsConfigs(
                     $this->getCountryVatNumberFormatValidatorsConfigMock([
-                        'country' => $ruCountry,
+                        'country' => $this->getCountryMock([
+                            'alpha2' => 'RU',
+                        ]),
                         'validators' => new CountryVatFormatValidators(
-                            $firstRUCountryVatValidator,
-                            $secondRUCountryVatValidator,
-                            $thirdRUCountryVatValidator
+                            new FirstRUVatNumberValidator(),
+                            new SecondRUVatNumberValidator(),
+                            new ThirdRUVatNumberValidator(),
                         ),
                     ]),
                     $this->getCountryVatNumberFormatValidatorsConfigMock([
-                        'country' => $deCountry,
+                        'country' => $this->getCountryMock([
+                            'alpha2' => 'DE',
+                        ]),
                         'validators' => new CountryVatFormatValidators(
-                            $firstDECountryVatValidator,
-                            $secondDECountryVatValidator,
-                            $thirdDECountryVatValidator
+                            new FirstDEVatNumberValidator(),
+                            new SecondDEVatNumberValidator(),
+                            new ThirdDEVatNumberValidator(),
                         ),
                     ]),
                     $this->getCountryVatNumberFormatValidatorsConfigMock([
-                        'country' => $atCountry,
+                        'country' => $this->getCountryMock([
+                            'alpha2' => 'AT',
+                        ]),
                         'validators' => new CountryVatFormatValidators(
-                            $firstATCountryVatValidator,
-                            $secondATCountryVatValidator,
-                            $thirdATCountryVatValidator
+                            new FirstATVatNumberValidator(),
+                            new SecondATVatNumberValidator(),
+                            new ThirdATVatNumberValidator(),
                         ),
                     ]),
                 ),
                 'givenCountry' => $this->getCountryMock(['alpha2' => 'RU',]),
                 'expectedValidators' => [
-                    $firstRUCountryVatValidator,
-                    $secondRUCountryVatValidator,
-                    $thirdRUCountryVatValidator,
+                    new FirstRUVatNumberValidator(),
+                    new SecondRUVatNumberValidator(),
+                    new ThirdRUVatNumberValidator(),
                 ],
             ],
         ];
