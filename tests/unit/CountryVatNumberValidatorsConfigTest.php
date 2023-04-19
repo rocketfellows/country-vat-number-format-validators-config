@@ -5,6 +5,7 @@ namespace rocketfellows\CountryVatNumberFormatValidatorsConfig\tests\unit;
 use arslanimamutdinov\ISOStandard3166\Country;
 use rocketfellows\CountryVatFormatValidatorInterface\CountryVatFormatValidatorInterface;
 use rocketfellows\CountryVatFormatValidatorInterface\CountryVatFormatValidators;
+use rocketfellows\CountryVatNumberFormatValidatorsConfig\CountryVatNumberValidatorsConfig;
 
 class CountryVatNumberValidatorsConfigTest extends CountryVatNumberValidatorsConfigInterfaceTest
 {
