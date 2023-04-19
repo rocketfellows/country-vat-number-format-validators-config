@@ -37,7 +37,8 @@ class CountryVatNumberFormatValidatorsConfigs extends Tuple
             $this->collectUniqueValidators($foundValidators, $config->getValidators());
         }
 
-        return $this->getValidatorsTuple($foundValidators);
+        return !empty($foundValidators) ?
+            new CountryVatFormatValidators(...$foundValidators) : new CountryVatFormatValidators();
     }
 
     public function getValidatorsByCountryCode(string $countryCode): CountryVatFormatValidators
@@ -58,7 +59,8 @@ class CountryVatNumberFormatValidatorsConfigs extends Tuple
             $this->collectUniqueValidators($foundValidators, $config->getValidators());
         }
 
-        return $this->getValidatorsTuple($foundValidators);
+        return !empty($foundValidators) ?
+            new CountryVatFormatValidators(...$foundValidators) : new CountryVatFormatValidators();
     }
 
     /**
@@ -92,15 +94,5 @@ class CountryVatNumberFormatValidatorsConfigs extends Tuple
         }
 
         return false;
-    }
-
-    /**
-     * @param CountryVatFormatValidatorInterface[] $validatorsArray
-     * @return CountryVatFormatValidators
-     */
-    private function getValidatorsTuple(array $validatorsArray = []): CountryVatFormatValidators
-    {
-        return !empty($validatorsArray) ?
-            new CountryVatFormatValidators(...$validatorsArray) : new CountryVatFormatValidators();
     }
 }
