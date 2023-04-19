@@ -24,7 +24,7 @@ class CountryVatNumberFormatValidatorsConfigs extends Tuple
         return parent::current();
     }
 
-    public function getCountryValidators(Country $country): ?CountryVatFormatValidators
+    public function getCountryValidators(Country $country): CountryVatFormatValidators
     {
         /** @var CountryVatFormatValidatorInterface $findValidators */
         $foundValidators = [];
@@ -43,7 +43,8 @@ class CountryVatNumberFormatValidatorsConfigs extends Tuple
             }
         }
 
-        return !empty($foundValidators) ? new CountryVatFormatValidators(...$foundValidators) : null;
+        return !empty($foundValidators) ?
+            new CountryVatFormatValidators(...$foundValidators) : new CountryVatFormatValidators();
     }
 
     public function getValidatorsByCountryCode(string $countryCode): ?CountryVatFormatValidators
@@ -69,7 +70,8 @@ class CountryVatNumberFormatValidatorsConfigs extends Tuple
             }
         }
 
-        return !empty($foundValidators) ? new CountryVatFormatValidators(...$foundValidators) : null;
+        return !empty($foundValidators) ?
+            new CountryVatFormatValidators(...$foundValidators) : new CountryVatFormatValidators();
     }
 
     /**
