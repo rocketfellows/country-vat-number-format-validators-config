@@ -332,6 +332,292 @@ class CountryVatNumberFormatValidatorsConfigsTest extends TestCase
                     new SecondDEVatNumberValidator(),
                 ],
             ],
+            [
+                'countriesConfigs' => new CountryVatNumberFormatValidatorsConfigs(),
+                'givenCountry' => $this->getCountryMock(['alpha2' => 'ru',]),
+                'expectedValidators' => [],
+            ],
+            [
+                'countriesConfigs' => new CountryVatNumberFormatValidatorsConfigs(
+                    $this->getCountryVatNumberFormatValidatorsConfigMock([
+                        'country' => $this->getCountryMock([
+                            'alpha2' => 'RU',
+                        ]),
+                        'validators' => new CountryVatFormatValidators(
+                            new FirstRUVatNumberValidator(),
+                            new SecondRUVatNumberValidator(),
+                            new ThirdRUVatNumberValidator(),
+                        ),
+                    ]),
+                    $this->getCountryVatNumberFormatValidatorsConfigMock([
+                        'country' => $this->getCountryMock([
+                            'alpha2' => 'DE',
+                        ]),
+                        'validators' => new CountryVatFormatValidators(
+                            new FirstDEVatNumberValidator(),
+                            new SecondDEVatNumberValidator(),
+                            new ThirdDEVatNumberValidator(),
+                        ),
+                    ]),
+                    $this->getCountryVatNumberFormatValidatorsConfigMock([
+                        'country' => $this->getCountryMock([
+                            'alpha2' => 'AT',
+                        ]),
+                        'validators' => new CountryVatFormatValidators(
+                            new FirstATVatNumberValidator(),
+                            new SecondATVatNumberValidator(),
+                            new ThirdATVatNumberValidator(),
+                        ),
+                    ]),
+                ),
+                'givenCountry' => $this->getCountryMock(['alpha2' => 'ru',]),
+                'expectedValidators' => [
+                    new FirstRUVatNumberValidator(),
+                    new SecondRUVatNumberValidator(),
+                    new ThirdRUVatNumberValidator(),
+                ],
+            ],
+            [
+                'countriesConfigs' => new CountryVatNumberFormatValidatorsConfigs(
+                    $this->getCountryVatNumberFormatValidatorsConfigMock([
+                        'country' => $this->getCountryMock([
+                            'alpha2' => 'RU',
+                        ]),
+                        'validators' => new CountryVatFormatValidators(
+                            new ThirdRUVatNumberValidator(),
+                        ),
+                    ]),
+                    $this->getCountryVatNumberFormatValidatorsConfigMock([
+                        'country' => $this->getCountryMock([
+                            'alpha2' => 'DE',
+                        ]),
+                        'validators' => new CountryVatFormatValidators(
+                            new FirstDEVatNumberValidator(),
+                            new SecondDEVatNumberValidator(),
+                            new ThirdDEVatNumberValidator(),
+                        ),
+                    ]),
+                    $this->getCountryVatNumberFormatValidatorsConfigMock([
+                        'country' => $this->getCountryMock([
+                            'alpha2' => 'AT',
+                        ]),
+                        'validators' => new CountryVatFormatValidators(
+                            new FirstATVatNumberValidator(),
+                            new SecondATVatNumberValidator(),
+                            new ThirdATVatNumberValidator(),
+                        ),
+                    ]),
+                ),
+                'givenCountry' => $this->getCountryMock(['alpha2' => 'ru',]),
+                'expectedValidators' => [
+                    new ThirdRUVatNumberValidator(),
+                ],
+            ],
+            [
+                'countriesConfigs' => new CountryVatNumberFormatValidatorsConfigs(
+                    $this->getCountryVatNumberFormatValidatorsConfigMock([
+                        'country' => $this->getCountryMock([
+                            'alpha2' => 'RU',
+                        ]),
+                        'validators' => new CountryVatFormatValidators(),
+                    ]),
+                    $this->getCountryVatNumberFormatValidatorsConfigMock([
+                        'country' => $this->getCountryMock([
+                            'alpha2' => 'DE',
+                        ]),
+                        'validators' => new CountryVatFormatValidators(
+                            new FirstDEVatNumberValidator(),
+                            new SecondDEVatNumberValidator(),
+                            new ThirdDEVatNumberValidator(),
+                        ),
+                    ]),
+                    $this->getCountryVatNumberFormatValidatorsConfigMock([
+                        'country' => $this->getCountryMock([
+                            'alpha2' => 'AT',
+                        ]),
+                        'validators' => new CountryVatFormatValidators(
+                            new FirstATVatNumberValidator(),
+                            new SecondATVatNumberValidator(),
+                            new ThirdATVatNumberValidator(),
+                        ),
+                    ]),
+                ),
+                'givenCountry' => $this->getCountryMock(['alpha2' => 'ru',]),
+                'expectedValidators' => [],
+            ],
+            [
+                'countriesConfigs' => new CountryVatNumberFormatValidatorsConfigs(
+                    $this->getCountryVatNumberFormatValidatorsConfigMock([
+                        'country' => $this->getCountryMock([
+                            'alpha2' => 'RU',
+                        ]),
+                        'validators' => new CountryVatFormatValidators(
+                            new FirstRUVatNumberValidator(),
+                            new SecondRUVatNumberValidator(),
+                            new ThirdRUVatNumberValidator(),
+                        ),
+                    ]),
+                    $this->getCountryVatNumberFormatValidatorsConfigMock([
+                        'country' => $this->getCountryMock([
+                            'alpha2' => 'RU',
+                        ]),
+                        'validators' => new CountryVatFormatValidators(
+                            new FirstRUVatNumberValidator(),
+                            new SecondRUVatNumberValidator(),
+                            new ThirdRUVatNumberValidator(),
+                        ),
+                    ]),
+                    $this->getCountryVatNumberFormatValidatorsConfigMock([
+                        'country' => $this->getCountryMock([
+                            'alpha2' => 'DE',
+                        ]),
+                        'validators' => new CountryVatFormatValidators(
+                            new FirstDEVatNumberValidator(),
+                            new SecondDEVatNumberValidator(),
+                            new ThirdDEVatNumberValidator(),
+                        ),
+                    ]),
+                    $this->getCountryVatNumberFormatValidatorsConfigMock([
+                        'country' => $this->getCountryMock([
+                            'alpha2' => 'AT',
+                        ]),
+                        'validators' => new CountryVatFormatValidators(
+                            new FirstATVatNumberValidator(),
+                            new SecondATVatNumberValidator(),
+                            new ThirdATVatNumberValidator(),
+                        ),
+                    ]),
+                ),
+                'givenCountry' => $this->getCountryMock(['alpha2' => 'ru',]),
+                'expectedValidators' => [
+                    new FirstRUVatNumberValidator(),
+                    new SecondRUVatNumberValidator(),
+                    new ThirdRUVatNumberValidator(),
+                ],
+            ],
+            [
+                'countriesConfigs' => new CountryVatNumberFormatValidatorsConfigs(
+                    $this->getCountryVatNumberFormatValidatorsConfigMock([
+                        'country' => $this->getCountryMock([
+                            'alpha2' => 'RU',
+                        ]),
+                        'validators' => new CountryVatFormatValidators(
+                            new FirstRUVatNumberValidator(),
+                            new SecondRUVatNumberValidator(),
+                            new ThirdRUVatNumberValidator(),
+                        ),
+                    ]),
+                    $this->getCountryVatNumberFormatValidatorsConfigMock([
+                        'country' => $this->getCountryMock([
+                            'alpha2' => 'RU',
+                        ]),
+                        'validators' => new CountryVatFormatValidators(
+                            new FirstRUVatNumberValidator(),
+                            new SecondRUVatNumberValidator(),
+                            new ThirdRUVatNumberValidator(),
+                            new FirstDEVatNumberValidator(),
+                            new SecondDEVatNumberValidator(),
+                            new ThirdDEVatNumberValidator(),
+                        ),
+                    ]),
+                    $this->getCountryVatNumberFormatValidatorsConfigMock([
+                        'country' => $this->getCountryMock([
+                            'alpha2' => 'DE',
+                        ]),
+                        'validators' => new CountryVatFormatValidators(
+                            new FirstDEVatNumberValidator(),
+                            new SecondDEVatNumberValidator(),
+                            new ThirdDEVatNumberValidator(),
+                        ),
+                    ]),
+                    $this->getCountryVatNumberFormatValidatorsConfigMock([
+                        'country' => $this->getCountryMock([
+                            'alpha2' => 'AT',
+                        ]),
+                        'validators' => new CountryVatFormatValidators(
+                            new FirstATVatNumberValidator(),
+                            new SecondATVatNumberValidator(),
+                            new ThirdATVatNumberValidator(),
+                        ),
+                    ]),
+                ),
+                'givenCountry' => $this->getCountryMock(['alpha2' => 'ru',]),
+                'expectedValidators' => [
+                    new FirstRUVatNumberValidator(),
+                    new SecondRUVatNumberValidator(),
+                    new ThirdRUVatNumberValidator(),
+                    new FirstDEVatNumberValidator(),
+                    new SecondDEVatNumberValidator(),
+                    new ThirdDEVatNumberValidator(),
+                ],
+            ],
+            [
+                'countriesConfigs' => new CountryVatNumberFormatValidatorsConfigs(
+                    $this->getCountryVatNumberFormatValidatorsConfigMock([
+                        'country' => $this->getCountryMock([
+                            'alpha2' => 'RU',
+                        ]),
+                        'validators' => new CountryVatFormatValidators(
+                            new FirstRUVatNumberValidator(),
+                            new SecondRUVatNumberValidator(),
+                        ),
+                    ]),
+                    $this->getCountryVatNumberFormatValidatorsConfigMock([
+                        'country' => $this->getCountryMock([
+                            'alpha2' => 'RU',
+                        ]),
+                        'validators' => new CountryVatFormatValidators(
+                            new ThirdRUVatNumberValidator(),
+                        ),
+                    ]),
+                    $this->getCountryVatNumberFormatValidatorsConfigMock([
+                        'country' => $this->getCountryMock([
+                            'alpha2' => 'RU',
+                        ]),
+                        'validators' => new CountryVatFormatValidators(
+                            new ThirdRUVatNumberValidator(),
+                        ),
+                    ]),
+                    $this->getCountryVatNumberFormatValidatorsConfigMock([
+                        'country' => $this->getCountryMock([
+                            'alpha2' => 'RU',
+                        ]),
+                        'validators' => new CountryVatFormatValidators(
+                            new ThirdRUVatNumberValidator(),
+                            new FirstDEVatNumberValidator(),
+                            new SecondDEVatNumberValidator(),
+                        ),
+                    ]),
+                    $this->getCountryVatNumberFormatValidatorsConfigMock([
+                        'country' => $this->getCountryMock([
+                            'alpha2' => 'DE',
+                        ]),
+                        'validators' => new CountryVatFormatValidators(
+                            new FirstDEVatNumberValidator(),
+                            new SecondDEVatNumberValidator(),
+                            new ThirdDEVatNumberValidator(),
+                        ),
+                    ]),
+                    $this->getCountryVatNumberFormatValidatorsConfigMock([
+                        'country' => $this->getCountryMock([
+                            'alpha2' => 'AT',
+                        ]),
+                        'validators' => new CountryVatFormatValidators(
+                            new FirstATVatNumberValidator(),
+                            new SecondATVatNumberValidator(),
+                            new ThirdATVatNumberValidator(),
+                        ),
+                    ]),
+                ),
+                'givenCountry' => $this->getCountryMock(['alpha2' => 'ru',]),
+                'expectedValidators' => [
+                    new FirstRUVatNumberValidator(),
+                    new SecondRUVatNumberValidator(),
+                    new ThirdRUVatNumberValidator(),
+                    new FirstDEVatNumberValidator(),
+                    new SecondDEVatNumberValidator(),
+                ],
+            ],
         ];
     }
 
