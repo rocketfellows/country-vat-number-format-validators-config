@@ -12,7 +12,7 @@ class CountryVatNumberFormatValidatorsConfigs extends Tuple
     /**
      * @var CountryVatNumberFormatValidatorsConfigInterface[]
      */
-    protected $data;
+    protected $data = [];
 
     public function __construct(CountryVatNumberFormatValidatorsConfigInterface ...$config)
     {
@@ -30,7 +30,7 @@ class CountryVatNumberFormatValidatorsConfigs extends Tuple
         $foundValidators = [];
 
         foreach ($this->data as $config) {
-            if ($config->getCountry()->getAlpha2() !== $country->getAlpha2()) {
+            if (strtoupper($config->getCountry()->getAlpha2()) !== strtoupper($country->getAlpha2())) {
                 continue;
             }
 
@@ -54,9 +54,9 @@ class CountryVatNumberFormatValidatorsConfigs extends Tuple
         $formattedCountryCode = strtoupper($countryCode);
 
         foreach ($this->data as $config) {
-            if (($config->getCountry()->getAlpha2() !== $formattedCountryCode) &&
-                ($config->getCountry()->getAlpha3() !== $formattedCountryCode) &&
-                ($config->getCountry()->getNumericCode() !== $formattedCountryCode)
+            if ((strtoupper($config->getCountry()->getAlpha2()) !== $formattedCountryCode) &&
+                (strtoupper($config->getCountry()->getAlpha3()) !== $formattedCountryCode) &&
+                (strtoupper($config->getCountry()->getNumericCode()) !== $formattedCountryCode)
             ) {
                 continue;
             }
@@ -84,7 +84,7 @@ class CountryVatNumberFormatValidatorsConfigs extends Tuple
         CountryVatFormatValidatorInterface $searchingValidator
     ): bool {
         foreach ($givenValidators as $givenValidator) {
-            if (get_class($givenValidator) === get_class($searchingValidator)) {
+            if ($givenValidator == $searchingValidator) {
                 return true;
             }
         }
