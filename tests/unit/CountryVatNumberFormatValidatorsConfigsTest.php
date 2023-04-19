@@ -1607,6 +1607,486 @@ class CountryVatNumberFormatValidatorsConfigsTest extends TestCase
                     new SecondDEVatNumberValidator(),
                 ],
             ],
+            [
+                'countriesConfigs' => new CountryVatNumberFormatValidatorsConfigs(),
+                'givenCountry' => '643',
+                'expectedValidators' => [],
+            ],
+            [
+                'countriesConfigs' => new CountryVatNumberFormatValidatorsConfigs(
+                    $this->getCountryVatNumberFormatValidatorsConfigMock([
+                        'country' => ISO3166::RU(),
+                        'validators' => new CountryVatFormatValidators(
+                            new FirstRUVatNumberValidator(),
+                            new SecondRUVatNumberValidator(),
+                            new ThirdRUVatNumberValidator(),
+                        ),
+                    ]),
+                    $this->getCountryVatNumberFormatValidatorsConfigMock([
+                        'country' => ISO3166::DE(),
+                        'validators' => new CountryVatFormatValidators(
+                            new FirstDEVatNumberValidator(),
+                            new SecondDEVatNumberValidator(),
+                            new ThirdDEVatNumberValidator(),
+                        ),
+                    ]),
+                    $this->getCountryVatNumberFormatValidatorsConfigMock([
+                        'country' => ISO3166::AT(),
+                        'validators' => new CountryVatFormatValidators(
+                            new FirstATVatNumberValidator(),
+                            new SecondATVatNumberValidator(),
+                            new ThirdATVatNumberValidator(),
+                        ),
+                    ]),
+                ),
+                'givenCountry' => '643',
+                'expectedValidators' => [
+                    new FirstRUVatNumberValidator(),
+                    new SecondRUVatNumberValidator(),
+                    new ThirdRUVatNumberValidator(),
+                ],
+            ],
+            [
+                'countriesConfigs' => new CountryVatNumberFormatValidatorsConfigs(
+                    $this->getCountryVatNumberFormatValidatorsConfigMock([
+                        'country' => ISO3166::RU(),
+                        'validators' => new CountryVatFormatValidators(
+                            new ThirdRUVatNumberValidator(),
+                        ),
+                    ]),
+                    $this->getCountryVatNumberFormatValidatorsConfigMock([
+                        'country' => ISO3166::DE(),
+                        'validators' => new CountryVatFormatValidators(
+                            new FirstDEVatNumberValidator(),
+                            new SecondDEVatNumberValidator(),
+                            new ThirdDEVatNumberValidator(),
+                        ),
+                    ]),
+                    $this->getCountryVatNumberFormatValidatorsConfigMock([
+                        'country' => ISO3166::AT(),
+                        'validators' => new CountryVatFormatValidators(
+                            new FirstATVatNumberValidator(),
+                            new SecondATVatNumberValidator(),
+                            new ThirdATVatNumberValidator(),
+                        ),
+                    ]),
+                ),
+                'givenCountry' => '643',
+                'expectedValidators' => [
+                    new ThirdRUVatNumberValidator(),
+                ],
+            ],
+            [
+                'countriesConfigs' => new CountryVatNumberFormatValidatorsConfigs(
+                    $this->getCountryVatNumberFormatValidatorsConfigMock([
+                        'country' => ISO3166::RU(),
+                        'validators' => new CountryVatFormatValidators(),
+                    ]),
+                    $this->getCountryVatNumberFormatValidatorsConfigMock([
+                        'country' => ISO3166::DE(),
+                        'validators' => new CountryVatFormatValidators(
+                            new FirstDEVatNumberValidator(),
+                            new SecondDEVatNumberValidator(),
+                            new ThirdDEVatNumberValidator(),
+                        ),
+                    ]),
+                    $this->getCountryVatNumberFormatValidatorsConfigMock([
+                        'country' => ISO3166::AT(),
+                        'validators' => new CountryVatFormatValidators(
+                            new FirstATVatNumberValidator(),
+                            new SecondATVatNumberValidator(),
+                            new ThirdATVatNumberValidator(),
+                        ),
+                    ]),
+                ),
+                'givenCountry' => '643',
+                'expectedValidators' => [],
+            ],
+            [
+                'countriesConfigs' => new CountryVatNumberFormatValidatorsConfigs(
+                    $this->getCountryVatNumberFormatValidatorsConfigMock([
+                        'country' => ISO3166::RU(),
+                        'validators' => new CountryVatFormatValidators(
+                            new FirstRUVatNumberValidator(),
+                            new SecondRUVatNumberValidator(),
+                            new ThirdRUVatNumberValidator(),
+                        ),
+                    ]),
+                    $this->getCountryVatNumberFormatValidatorsConfigMock([
+                        'country' => ISO3166::RU(),
+                        'validators' => new CountryVatFormatValidators(
+                            new FirstRUVatNumberValidator(),
+                            new SecondRUVatNumberValidator(),
+                            new ThirdRUVatNumberValidator(),
+                        ),
+                    ]),
+                    $this->getCountryVatNumberFormatValidatorsConfigMock([
+                        'country' => ISO3166::DE(),
+                        'validators' => new CountryVatFormatValidators(
+                            new FirstDEVatNumberValidator(),
+                            new SecondDEVatNumberValidator(),
+                            new ThirdDEVatNumberValidator(),
+                        ),
+                    ]),
+                    $this->getCountryVatNumberFormatValidatorsConfigMock([
+                        'country' => ISO3166::AT(),
+                        'validators' => new CountryVatFormatValidators(
+                            new FirstATVatNumberValidator(),
+                            new SecondATVatNumberValidator(),
+                            new ThirdATVatNumberValidator(),
+                        ),
+                    ]),
+                ),
+                'givenCountry' => '643',
+                'expectedValidators' => [
+                    new FirstRUVatNumberValidator(),
+                    new SecondRUVatNumberValidator(),
+                    new ThirdRUVatNumberValidator(),
+                ],
+            ],
+            [
+                'countriesConfigs' => new CountryVatNumberFormatValidatorsConfigs(
+                    $this->getCountryVatNumberFormatValidatorsConfigMock([
+                        'country' => ISO3166::RU(),
+                        'validators' => new CountryVatFormatValidators(
+                            new FirstRUVatNumberValidator(),
+                            new SecondRUVatNumberValidator(),
+                            new ThirdRUVatNumberValidator(),
+                        ),
+                    ]),
+                    $this->getCountryVatNumberFormatValidatorsConfigMock([
+                        'country' => ISO3166::RU(),
+                        'validators' => new CountryVatFormatValidators(
+                            new FirstRUVatNumberValidator(),
+                            new SecondRUVatNumberValidator(),
+                            new ThirdRUVatNumberValidator(),
+                            new FirstDEVatNumberValidator(),
+                            new SecondDEVatNumberValidator(),
+                            new ThirdDEVatNumberValidator(),
+                        ),
+                    ]),
+                    $this->getCountryVatNumberFormatValidatorsConfigMock([
+                        'country' => ISO3166::DE(),
+                        'validators' => new CountryVatFormatValidators(
+                            new FirstDEVatNumberValidator(),
+                            new SecondDEVatNumberValidator(),
+                            new ThirdDEVatNumberValidator(),
+                        ),
+                    ]),
+                    $this->getCountryVatNumberFormatValidatorsConfigMock([
+                        'country' => ISO3166::AT(),
+                        'validators' => new CountryVatFormatValidators(
+                            new FirstATVatNumberValidator(),
+                            new SecondATVatNumberValidator(),
+                            new ThirdATVatNumberValidator(),
+                        ),
+                    ]),
+                ),
+                'givenCountry' => '643',
+                'expectedValidators' => [
+                    new FirstRUVatNumberValidator(),
+                    new SecondRUVatNumberValidator(),
+                    new ThirdRUVatNumberValidator(),
+                    new FirstDEVatNumberValidator(),
+                    new SecondDEVatNumberValidator(),
+                    new ThirdDEVatNumberValidator(),
+                ],
+            ],
+            [
+                'countriesConfigs' => new CountryVatNumberFormatValidatorsConfigs(
+                    $this->getCountryVatNumberFormatValidatorsConfigMock([
+                        'country' => ISO3166::RU(),
+                        'validators' => new CountryVatFormatValidators(
+                            new FirstRUVatNumberValidator(),
+                            new SecondRUVatNumberValidator(),
+                        ),
+                    ]),
+                    $this->getCountryVatNumberFormatValidatorsConfigMock([
+                        'country' => ISO3166::RU(),
+                        'validators' => new CountryVatFormatValidators(
+                            new ThirdRUVatNumberValidator(),
+                        ),
+                    ]),
+                    $this->getCountryVatNumberFormatValidatorsConfigMock([
+                        'country' => ISO3166::RU(),
+                        'validators' => new CountryVatFormatValidators(
+                            new ThirdRUVatNumberValidator(),
+                        ),
+                    ]),
+                    $this->getCountryVatNumberFormatValidatorsConfigMock([
+                        'country' => ISO3166::RU(),
+                        'validators' => new CountryVatFormatValidators(
+                            new ThirdRUVatNumberValidator(),
+                            new FirstDEVatNumberValidator(),
+                            new SecondDEVatNumberValidator(),
+                        ),
+                    ]),
+                    $this->getCountryVatNumberFormatValidatorsConfigMock([
+                        'country' => ISO3166::DE(),
+                        'validators' => new CountryVatFormatValidators(
+                            new FirstDEVatNumberValidator(),
+                            new SecondDEVatNumberValidator(),
+                            new ThirdDEVatNumberValidator(),
+                        ),
+                    ]),
+                    $this->getCountryVatNumberFormatValidatorsConfigMock([
+                        'country' => ISO3166::AT(),
+                        'validators' => new CountryVatFormatValidators(
+                            new FirstATVatNumberValidator(),
+                            new SecondATVatNumberValidator(),
+                            new ThirdATVatNumberValidator(),
+                        ),
+                    ]),
+                ),
+                'givenCountry' => '643',
+                'expectedValidators' => [
+                    new FirstRUVatNumberValidator(),
+                    new SecondRUVatNumberValidator(),
+                    new ThirdRUVatNumberValidator(),
+                    new FirstDEVatNumberValidator(),
+                    new SecondDEVatNumberValidator(),
+                ],
+            ],
+            [
+                'countriesConfigs' => new CountryVatNumberFormatValidatorsConfigs(),
+                'givenCountry' => '643',
+                'expectedValidators' => [],
+            ],
+            [
+                'countriesConfigs' => new CountryVatNumberFormatValidatorsConfigs(
+                    $this->getCountryVatNumberFormatValidatorsConfigMock([
+                        'country' => ISO3166::RU(),
+                        'validators' => new CountryVatFormatValidators(
+                            new FirstRUVatNumberValidator(),
+                            new SecondRUVatNumberValidator(),
+                            new ThirdRUVatNumberValidator(),
+                        ),
+                    ]),
+                    $this->getCountryVatNumberFormatValidatorsConfigMock([
+                        'country' => ISO3166::DE(),
+                        'validators' => new CountryVatFormatValidators(
+                            new FirstDEVatNumberValidator(),
+                            new SecondDEVatNumberValidator(),
+                            new ThirdDEVatNumberValidator(),
+                        ),
+                    ]),
+                    $this->getCountryVatNumberFormatValidatorsConfigMock([
+                        'country' => ISO3166::AT(),
+                        'validators' => new CountryVatFormatValidators(
+                            new FirstATVatNumberValidator(),
+                            new SecondATVatNumberValidator(),
+                            new ThirdATVatNumberValidator(),
+                        ),
+                    ]),
+                ),
+                'givenCountry' => '643',
+                'expectedValidators' => [
+                    new FirstRUVatNumberValidator(),
+                    new SecondRUVatNumberValidator(),
+                    new ThirdRUVatNumberValidator(),
+                ],
+            ],
+            [
+                'countriesConfigs' => new CountryVatNumberFormatValidatorsConfigs(
+                    $this->getCountryVatNumberFormatValidatorsConfigMock([
+                        'country' => ISO3166::RU(),
+                        'validators' => new CountryVatFormatValidators(
+                            new ThirdRUVatNumberValidator(),
+                        ),
+                    ]),
+                    $this->getCountryVatNumberFormatValidatorsConfigMock([
+                        'country' => ISO3166::DE(),
+                        'validators' => new CountryVatFormatValidators(
+                            new FirstDEVatNumberValidator(),
+                            new SecondDEVatNumberValidator(),
+                            new ThirdDEVatNumberValidator(),
+                        ),
+                    ]),
+                    $this->getCountryVatNumberFormatValidatorsConfigMock([
+                        'country' => ISO3166::AT(),
+                        'validators' => new CountryVatFormatValidators(
+                            new FirstATVatNumberValidator(),
+                            new SecondATVatNumberValidator(),
+                            new ThirdATVatNumberValidator(),
+                        ),
+                    ]),
+                ),
+                'givenCountry' => '643',
+                'expectedValidators' => [
+                    new ThirdRUVatNumberValidator(),
+                ],
+            ],
+            [
+                'countriesConfigs' => new CountryVatNumberFormatValidatorsConfigs(
+                    $this->getCountryVatNumberFormatValidatorsConfigMock([
+                        'country' => ISO3166::RU(),
+                        'validators' => new CountryVatFormatValidators(),
+                    ]),
+                    $this->getCountryVatNumberFormatValidatorsConfigMock([
+                        'country' => ISO3166::DE(),
+                        'validators' => new CountryVatFormatValidators(
+                            new FirstDEVatNumberValidator(),
+                            new SecondDEVatNumberValidator(),
+                            new ThirdDEVatNumberValidator(),
+                        ),
+                    ]),
+                    $this->getCountryVatNumberFormatValidatorsConfigMock([
+                        'country' => ISO3166::AT(),
+                        'validators' => new CountryVatFormatValidators(
+                            new FirstATVatNumberValidator(),
+                            new SecondATVatNumberValidator(),
+                            new ThirdATVatNumberValidator(),
+                        ),
+                    ]),
+                ),
+                'givenCountry' => '643',
+                'expectedValidators' => [],
+            ],
+            [
+                'countriesConfigs' => new CountryVatNumberFormatValidatorsConfigs(
+                    $this->getCountryVatNumberFormatValidatorsConfigMock([
+                        'country' => ISO3166::RU(),
+                        'validators' => new CountryVatFormatValidators(
+                            new FirstRUVatNumberValidator(),
+                            new SecondRUVatNumberValidator(),
+                            new ThirdRUVatNumberValidator(),
+                        ),
+                    ]),
+                    $this->getCountryVatNumberFormatValidatorsConfigMock([
+                        'country' => ISO3166::RU(),
+                        'validators' => new CountryVatFormatValidators(
+                            new FirstRUVatNumberValidator(),
+                            new SecondRUVatNumberValidator(),
+                            new ThirdRUVatNumberValidator(),
+                        ),
+                    ]),
+                    $this->getCountryVatNumberFormatValidatorsConfigMock([
+                        'country' => ISO3166::DE(),
+                        'validators' => new CountryVatFormatValidators(
+                            new FirstDEVatNumberValidator(),
+                            new SecondDEVatNumberValidator(),
+                            new ThirdDEVatNumberValidator(),
+                        ),
+                    ]),
+                    $this->getCountryVatNumberFormatValidatorsConfigMock([
+                        'country' => ISO3166::AT(),
+                        'validators' => new CountryVatFormatValidators(
+                            new FirstATVatNumberValidator(),
+                            new SecondATVatNumberValidator(),
+                            new ThirdATVatNumberValidator(),
+                        ),
+                    ]),
+                ),
+                'givenCountry' => '643',
+                'expectedValidators' => [
+                    new FirstRUVatNumberValidator(),
+                    new SecondRUVatNumberValidator(),
+                    new ThirdRUVatNumberValidator(),
+                ],
+            ],
+            [
+                'countriesConfigs' => new CountryVatNumberFormatValidatorsConfigs(
+                    $this->getCountryVatNumberFormatValidatorsConfigMock([
+                        'country' => ISO3166::RU(),
+                        'validators' => new CountryVatFormatValidators(
+                            new FirstRUVatNumberValidator(),
+                            new SecondRUVatNumberValidator(),
+                            new ThirdRUVatNumberValidator(),
+                        ),
+                    ]),
+                    $this->getCountryVatNumberFormatValidatorsConfigMock([
+                        'country' => ISO3166::RU(),
+                        'validators' => new CountryVatFormatValidators(
+                            new FirstRUVatNumberValidator(),
+                            new SecondRUVatNumberValidator(),
+                            new ThirdRUVatNumberValidator(),
+                            new FirstDEVatNumberValidator(),
+                            new SecondDEVatNumberValidator(),
+                            new ThirdDEVatNumberValidator(),
+                        ),
+                    ]),
+                    $this->getCountryVatNumberFormatValidatorsConfigMock([
+                        'country' => ISO3166::DE(),
+                        'validators' => new CountryVatFormatValidators(
+                            new FirstDEVatNumberValidator(),
+                            new SecondDEVatNumberValidator(),
+                            new ThirdDEVatNumberValidator(),
+                        ),
+                    ]),
+                    $this->getCountryVatNumberFormatValidatorsConfigMock([
+                        'country' => ISO3166::AT(),
+                        'validators' => new CountryVatFormatValidators(
+                            new FirstATVatNumberValidator(),
+                            new SecondATVatNumberValidator(),
+                            new ThirdATVatNumberValidator(),
+                        ),
+                    ]),
+                ),
+                'givenCountry' => '643',
+                'expectedValidators' => [
+                    new FirstRUVatNumberValidator(),
+                    new SecondRUVatNumberValidator(),
+                    new ThirdRUVatNumberValidator(),
+                    new FirstDEVatNumberValidator(),
+                    new SecondDEVatNumberValidator(),
+                    new ThirdDEVatNumberValidator(),
+                ],
+            ],
+            [
+                'countriesConfigs' => new CountryVatNumberFormatValidatorsConfigs(
+                    $this->getCountryVatNumberFormatValidatorsConfigMock([
+                        'country' => ISO3166::RU(),
+                        'validators' => new CountryVatFormatValidators(
+                            new FirstRUVatNumberValidator(),
+                            new SecondRUVatNumberValidator(),
+                        ),
+                    ]),
+                    $this->getCountryVatNumberFormatValidatorsConfigMock([
+                        'country' => ISO3166::RU(),
+                        'validators' => new CountryVatFormatValidators(
+                            new ThirdRUVatNumberValidator(),
+                        ),
+                    ]),
+                    $this->getCountryVatNumberFormatValidatorsConfigMock([
+                        'country' => ISO3166::RU(),
+                        'validators' => new CountryVatFormatValidators(
+                            new ThirdRUVatNumberValidator(),
+                        ),
+                    ]),
+                    $this->getCountryVatNumberFormatValidatorsConfigMock([
+                        'country' => ISO3166::RU(),
+                        'validators' => new CountryVatFormatValidators(
+                            new ThirdRUVatNumberValidator(),
+                            new FirstDEVatNumberValidator(),
+                            new SecondDEVatNumberValidator(),
+                        ),
+                    ]),
+                    $this->getCountryVatNumberFormatValidatorsConfigMock([
+                        'country' => ISO3166::DE(),
+                        'validators' => new CountryVatFormatValidators(
+                            new FirstDEVatNumberValidator(),
+                            new SecondDEVatNumberValidator(),
+                            new ThirdDEVatNumberValidator(),
+                        ),
+                    ]),
+                    $this->getCountryVatNumberFormatValidatorsConfigMock([
+                        'country' => ISO3166::AT(),
+                        'validators' => new CountryVatFormatValidators(
+                            new FirstATVatNumberValidator(),
+                            new SecondATVatNumberValidator(),
+                            new ThirdATVatNumberValidator(),
+                        ),
+                    ]),
+                ),
+                'givenCountry' => '643',
+                'expectedValidators' => [
+                    new FirstRUVatNumberValidator(),
+                    new SecondRUVatNumberValidator(),
+                    new ThirdRUVatNumberValidator(),
+                    new FirstDEVatNumberValidator(),
+                    new SecondDEVatNumberValidator(),
+                ],
+            ],
         ];
     }
 
