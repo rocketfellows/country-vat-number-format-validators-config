@@ -39,6 +39,10 @@ class CountryVatNumberValidatorsConfigTest extends CountryVatNumberValidatorsCon
         }
 
         $this->assertEquals($expectedCountry, $this->config->getCountry());
+        $this->assertEquals($expectedCountry->getAlpha2(), $this->config->getCountry()->getAlpha2());
+        $this->assertEquals($expectedCountry->getAlpha3(), $this->config->getCountry()->getAlpha3());
+        $this->assertEquals($expectedCountry->getNumericCode(), $this->config->getCountry()->getNumericCode());
+        $this->assertEquals($expectedCountry->getName(), $this->config->getCountry()->getName());
         $this->assertEquals($expectedValidators, $actualValidators);
     }
 
@@ -46,17 +50,32 @@ class CountryVatNumberValidatorsConfigTest extends CountryVatNumberValidatorsCon
     {
         return [
             'country without validators' => [
-                'country' => $this->getCountryMock(),
+                'country' => $this->getCountryMock([
+                    'alpha2' => 'fo',
+                    'alpha3' => 'foo',
+                    'numericCode' => '111',
+                    'name' => 'Foo Bar'
+                ]),
                 'validators' => [],
             ],
             'country with one validator' => [
-                'country' => $this->getCountryMock(),
+                'country' => $this->getCountryMock([
+                    'alpha2' => 'fo',
+                    'alpha3' => 'foo',
+                    'numericCode' => '111',
+                    'name' => 'Foo Bar'
+                ]),
                 'validators' => [
                     $this->createMock(CountryVatFormatValidatorInterface::class),
                 ],
             ],
             'country with multiple validators' => [
-                'country' => $this->getCountryMock(),
+                'country' => $this->getCountryMock([
+                    'alpha2' => 'fo',
+                    'alpha3' => 'foo',
+                    'numericCode' => '111',
+                    'name' => 'Foo Bar'
+                ]),
                 'validators' => [
                     $this->createMock(CountryVatFormatValidatorInterface::class),
                     $this->createMock(CountryVatFormatValidatorInterface::class),
