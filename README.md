@@ -42,7 +42,7 @@ The class constructor takes two parameters:
 - $country - object instance of arslanimamutdinov\ISOStandard3166\Country;
 - $validators - vat number format validators tuple, an object of type rocketfellows\CountryVatFormatValidatorInterface\CountryVatFormatValidators;
 
-### Object instantiating example
+Object instantiating example:
 
 ```php
 /**
@@ -53,6 +53,45 @@ $config = new CountryVatNumberValidatorsConfig(Country::RU(), $validators);
 
 $config->getCountry();      // will return RU country object
 $config->getValidators();   // will return $validators tuple
+```
+
+## CountryVatNumberFormatValidatorsConfigs description
+
+Vat number format validators configuration tuple for countries.
+Is a list of elements, each element of which is an object of type CountryVatNumberFormatValidatorsConfigInterface.
+Also provides a number of functions for searching by tuple.
+
+Tuple provides looping by its elements:
+
+```php
+// implements CountryVatNumberFormatValidatorsConfigInterface
+$ruVatNumberFormatValidatorsConfig = new CountryVatNumberValidatorsConfig(
+    Country::RU(),
+    new CountryVatFormatValidators(new RUVatNumberFormatValidator())
+);
+
+// implements CountryVatNumberFormatValidatorsConfigInterface
+$deVatNumberFormatValidatorsConfig = new CountryVatNumberValidatorsConfig(
+    Country::DE(),
+    new CountryVatFormatValidators(new DEVatNumberFormatValidator())
+);
+
+// implements CountryVatNumberFormatValidatorsConfigInterface
+$atVatNumberFormatValidatorsConfig = new CountryVatNumberValidatorsConfig(
+    Country::AT(),
+    new CountryVatFormatValidators(new ATVatNumberFormatValidator())
+);
+
+$configs = new CountryVatNumberFormatValidatorsConfigs(
+    $ruVatNumberFormatValidatorsConfig,
+    $deVatNumberFormatValidatorsConfig,
+    $atVatNumberFormatValidatorsConfig
+);
+
+foreach ($configs as $config) {
+    $config->getCountry();      // returns Country of current config
+    $config->getValidators();   // return CountryVatFormatValidators of current config
+}
 ```
 
 ## Contributing
