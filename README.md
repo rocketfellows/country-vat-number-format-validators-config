@@ -14,6 +14,12 @@ Also in this package are presented:
 composer require rocketfellows/country-vat-number-format-validators-config
 ```
 
+## Dependencies
+
+- https://github.com/rocketfellows/country-vat-format-validator-interface
+- https://github.com/arslanim/iso-standard-3166
+- https://github.com/rocketfellows/tuple
+
 ## List of package components
 
 - CountryVatNumberFormatValidatorsConfigInterface - interface for configuring country-specific vat number format validators;
