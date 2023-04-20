@@ -5,6 +5,8 @@ RUN apt-get update && apt-get install -y \
     unzip \
     mc
 RUN docker-php-ext-install zip
+RUN pecl install xdebug-3.1.5
+RUN docker-php-ext-enable xdebug
 RUN mkdir -p /home/app
 WORKDIR /home/app
 COPY . /home/app
