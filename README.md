@@ -88,6 +88,7 @@ $configs = new CountryVatNumberFormatValidatorsConfigs(
     $atVatNumberFormatValidatorsConfig
 );
 
+// each $config variable is an instance of CountryVatNumberFormatValidatorsConfigInterface
 foreach ($configs as $config) {
     $config->getCountry();      // returns Country of current config
     $config->getValidators();   // return CountryVatFormatValidators of current config
