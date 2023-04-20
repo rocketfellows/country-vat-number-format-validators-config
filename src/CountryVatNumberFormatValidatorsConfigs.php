@@ -47,7 +47,7 @@ class CountryVatNumberFormatValidatorsConfigs extends Tuple
             new CountryVatFormatValidators(...$foundValidators) : new CountryVatFormatValidators();
     }
 
-    public function getValidatorsByCountryCode(string $countryCode): ?CountryVatFormatValidators
+    public function getValidatorsByCountryCode(string $countryCode): CountryVatFormatValidators
     {
         /** @var CountryVatFormatValidatorInterface[] $foundValidators */
         $foundValidators = [];
