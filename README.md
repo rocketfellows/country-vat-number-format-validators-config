@@ -22,25 +22,25 @@ composer require rocketfellows/country-vat-number-format-validators-config
 
 ## List of package components
 
-- CountryVatNumberFormatValidatorsConfigInterface - interface for configuring country-specific vat number format validators;
-- CountryVatNumberValidatorsConfig - simple implementation of CountryVatNumberFormatValidatorsConfigInterface interface, which is a DTO initialized, by country (an object of type Country) and tuple of validators (a list of objects of type CountryVatFormatValidatorInterface);
-- CountryVatNumberFormatValidatorsConfigs - vat number format validators configuration tuple for countries, is a list of elements, each element of which is an object of type CountryVatNumberFormatValidatorsConfigInterface, also provides a number of functions for searching by tuple;
+- **_CountryVatNumberFormatValidatorsConfigInterface_** - interface for configuring country-specific vat number format validators;
+- **_CountryVatNumberValidatorsConfig_** - simple implementation of **_CountryVatNumberFormatValidatorsConfigInterface_** interface, which is a DTO initialized, by country (an object of type Country) and tuple of validators (a list of objects of type **_CountryVatFormatValidatorInterface_**);
+- **_CountryVatNumberFormatValidatorsConfigs_** - vat number format validators configuration tuple for countries, is a list of elements, each element of which is an object of type **_CountryVatNumberFormatValidatorsConfigInterface_**, also provides a number of functions for searching by tuple;
 
 ## CountryVatNumberFormatValidatorsConfigInterface description
 
 Interface for configuring country-specific vat number format validators.
 
 Methods that class must implement according to the interface:
-- getCountry - country object getter, must return an object of type arslanimamutdinov\ISOStandard3166\Country;
-- getValidators - vat number format validators tuple getter, must return an object of type rocketfellows\CountryVatFormatValidatorInterface\CountryVatFormatValidators;
+- **_getCountry_** - country object getter, must return an object of type **_arslanimamutdinov\ISOStandard3166\Country_**;
+- **_getValidators_** - vat number format validators tuple getter, must return an object of type **_rocketfellows\CountryVatFormatValidatorInterface\CountryVatFormatValidators_**;
 
 ## CountryVatNumberValidatorsConfig description
 
-Simple implementation of CountryVatNumberFormatValidatorsConfigInterface interface, which is a DTO initialized, by country (an object of type Country) and tuple of validators (a list of objects of type CountryVatFormatValidatorInterface).
+Simple implementation of **_CountryVatNumberFormatValidatorsConfigInterface_** interface, which is a DTO initialized, by country (an object of type Country) and tuple of validators (a list of objects of type **_CountryVatFormatValidatorInterface_**).
 
 The class constructor takes two parameters:
-- $country - object instance of arslanimamutdinov\ISOStandard3166\Country;
-- $validators - vat number format validators tuple, an object of type rocketfellows\CountryVatFormatValidatorInterface\CountryVatFormatValidators;
+- **_$country_** - object instance of arslanimamutdinov\ISOStandard3166\Country;
+- **_$validators_** - vat number format validators tuple, an object of type **_rocketfellows\CountryVatFormatValidatorInterface\CountryVatFormatValidators_**;
 
 Object instantiating example:
 
@@ -58,7 +58,7 @@ $config->getValidators();   // will return $validators tuple
 ## CountryVatNumberFormatValidatorsConfigs description
 
 Vat number format validators configuration tuple for countries.
-Is a list of elements, each element of which is an object of type CountryVatNumberFormatValidatorsConfigInterface.
+Is a list of elements, each element of which is an object of type **_CountryVatNumberFormatValidatorsConfigInterface_**.
 Also provides a number of functions for searching by tuple.
 
 Tuple provides looping by its elements:
@@ -95,18 +95,18 @@ foreach ($configs as $config) {
 }
 ```
 
-CountryVatNumberFormatValidatorsConfigs public functions:
-- getCountryValidators(Country $country) - returns unique validators (object instance of CountryVatFormatValidators) for given Country object from tuple, if there is not validators for given country will return empty tuple;
-- getValidatorsByCountryCode(string $countryCode) - returns unique validators (object instance of CountryVatFormatValidators) for given country code (search by alpha2, alpha3 and numeric code) from tuple, if there is not validators for given country code will return empty tuple;
+**_CountryVatNumberFormatValidatorsConfigs_** public functions:
+- **_getCountryValidators(Country $country)_** - returns unique validators (object instance of CountryVatFormatValidators) for given **_Country_** object from tuple, if there is not validators for given country will return empty tuple;
+- **_getValidatorsByCountryCode(string $countryCode)_** - returns unique validators (object instance of **_CountryVatFormatValidators_**) for given country code (search by alpha2, alpha3 and numeric code) from tuple, if there is not validators for given country code will return empty tuple;
 
-Search functions will return a CountryVatFormatValidators tuple, which will consist of a list of unique validators.
-For example, the initial configuration tuple CountryVatNumberFormatValidatorsConfigs may contain several configurations for the same country.
+Search functions will return a **_CountryVatFormatValidators_** tuple, which will consist of a list of unique validators.
+For example, the initial configuration tuple **_CountryVatNumberFormatValidatorsConfigs_** may contain several configurations for the same country.
 In this case, the tuple will contain unique validators from all configurations of the desired country.
 Also, one configuration can be given for a country, but it can contain the same validators, in which case the tuple of validators for the desired country will also consist of unique validators.
 
 More search use cases can be found in tests:
-- rocketfellows\CountryVatNumberFormatValidatorsConfig\tests\unit\GetCountryValidatorsTest
-- rocketfellows\CountryVatNumberFormatValidatorsConfig\tests\unit\GetValidatorsByCountryCodeTest
+- **_rocketfellows\CountryVatNumberFormatValidatorsConfig\tests\unit\GetCountryValidatorsTest_**;
+- **_rocketfellows\CountryVatNumberFormatValidatorsConfig\tests\unit\GetValidatorsByCountryCodeTest_**;
 
 ## Contributing
 
