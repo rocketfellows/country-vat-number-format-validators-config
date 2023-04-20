@@ -95,9 +95,21 @@ foreach ($configs as $config) {
 }
 ```
 
+CountryVatNumberFormatValidatorsConfigs public functions:
+- getCountryValidators(Country $country) - returns unique validators (object instance of CountryVatFormatValidators) for given Country object from tuple, if there is not validators for given country will return empty tuple;
+- getValidatorsByCountryCode(string $countryCode) - returns unique validators (object instance of CountryVatFormatValidators) for given country code (search by alpha2, alpha3 and numeric code) from tuple, if there is not validators for given country code will return empty tuple;
+
+Search functions will return a CountryVatFormatValidators tuple, which will consist of a list of unique validators.
+For example, the initial configuration tuple CountryVatNumberFormatValidatorsConfigs may contain several configurations for the same country.
+In this case, the tuple will contain unique validators from all configurations of the desired country.
+Also, one configuration can be given for a country, but it can contain the same validators, in which case the tuple of validators for the desired country will also consist of unique validators.
+
+More search use cases can be found in tests:
+- rocketfellows\CountryVatNumberFormatValidatorsConfig\tests\unit\GetCountryValidatorsTest
+- rocketfellows\CountryVatNumberFormatValidatorsConfig\tests\unit\GetValidatorsByCountryCodeTest
+
 ## Contributing
 
 Welcome to pull requests. If there is a major changes, first please open an issue for discussion.
 
 Please make sure to update tests as appropriate.
-
