@@ -8,6 +8,10 @@ Also in this package are presented:
 - a simple implementation of the interface in the form of a DTO;
 - implementation of a tuple of objects that implement the interface for configuring vat number format validators for a specific country.
 
+Below is a component class diagram:
+
+![img.png](img.png)
+
 ## Installation
 
 ```shell
