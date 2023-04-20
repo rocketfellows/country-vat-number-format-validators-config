@@ -5,10 +5,65 @@ namespace rocketfellows\CountryVatNumberFormatValidatorsConfig\tests\unit;
 use arslanimamutdinov\ISOStandard3166\Country;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
+use rocketfellows\CountryVatFormatValidatorInterface\CountryVatFormatValidators;
 use rocketfellows\CountryVatNumberFormatValidatorsConfig\CountryVatNumberFormatValidatorsConfigInterface;
+use rocketfellows\CountryVatNumberFormatValidatorsConfig\CountryVatNumberFormatValidatorsConfigs;
 
 abstract class CountryVatNumberFormatValidatorsConfigsTest extends TestCase
 {
+    /**
+     * @dataProvider getConfigInitializationProvidedData
+     * @param CountryVatNumberFormatValidatorsConfigInterface[] $expectedConfigsArray
+     */
+    public function testCountryVatNumberFormatValidatorsConfigsInitialization(array $expectedConfigsArray): void
+    {
+        $configs = new CountryVatNumberFormatValidatorsConfigs(...$expectedConfigsArray);
+
+        $actualConfigsArray = [];
+        foreach ($configs as $config) {
+            $actualConfigsArray[] = $config;
+        }
+
+        $this->assertEquals($expectedConfigsArray, $actualConfigsArray);
+    }
+
+    public function getConfigInitializationProvidedData(): array
+    {
+        return [
+            'empty config' => [
+                'expectedConfigsArray' => [],
+            ],
+            'one config' => [
+                'expectedConfigsArray' => [
+                    $this->getCountryVatNumberFormatValidatorsConfigMock([
+                        'country' => $this->getCountryMock(),
+                        'validators' => $this->createMock(CountryVatFormatValidators::class),
+                    ]),
+                ],
+            ],
+            'multiple configs' => [
+                'expectedConfigsArray' => [
+                    $this->getCountryVatNumberFormatValidatorsConfigMock([
+                        'country' => $this->getCountryMock(),
+                        'validators' => $this->createMock(CountryVatFormatValidators::class),
+                    ]),
+                    $this->getCountryVatNumberFormatValidatorsConfigMock([
+                        'country' => $this->getCountryMock(),
+                        'validators' => $this->createMock(CountryVatFormatValidators::class),
+                    ]),
+                    $this->getCountryVatNumberFormatValidatorsConfigMock([
+                        'country' => $this->getCountryMock(),
+                        'validators' => $this->createMock(CountryVatFormatValidators::class),
+                    ]),
+                    $this->getCountryVatNumberFormatValidatorsConfigMock([
+                        'country' => $this->getCountryMock(),
+                        'validators' => $this->createMock(CountryVatFormatValidators::class),
+                    ]),
+                ],
+            ],
+        ];
+    }
+
     /**
      * @param array $params
      * @return Country
