@@ -34,6 +34,27 @@ Methods that class must implement according to the interface:
 - getCountry - country object getter, must return an object of type arslanimamutdinov\ISOStandard3166\Country;
 - getValidators - vat number format validators tuple getter, must return an object of type rocketfellows\CountryVatFormatValidatorInterface\CountryVatFormatValidators;
 
+## CountryVatNumberValidatorsConfig description
+
+Simple implementation of CountryVatNumberFormatValidatorsConfigInterface interface, which is a DTO initialized, by country (an object of type Country) and tuple of validators (a list of objects of type CountryVatFormatValidatorInterface).
+
+The class constructor takes two parameters:
+- $country - object instance of arslanimamutdinov\ISOStandard3166\Country;
+- $validators - vat number format validators tuple, an object of type rocketfellows\CountryVatFormatValidatorInterface\CountryVatFormatValidators;
+
+### Object instantiating example
+
+```php
+/**
+* FirstRUVatNumberValidator and SecondRUVatNumberValidator are implemented CountryVatFormatValidatorInterface
+*/
+$validators = new CountryVatFormatValidators(new FirstRUVatNumberValidator(), new SecondRUVatNumberValidator());
+$config = new CountryVatNumberValidatorsConfig(Country::RU(), $validators);
+
+$config->getCountry();      // will return RU country object
+$config->getValidators();   // will return $validators tuple
+```
+
 ## Contributing
 
 Welcome to pull requests. If there is a major changes, first please open an issue for discussion.
