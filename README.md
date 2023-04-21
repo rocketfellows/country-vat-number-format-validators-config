@@ -20,9 +20,9 @@ composer require rocketfellows/country-vat-number-format-validators-config
 
 ## Dependencies
 
-- https://github.com/rocketfellows/country-vat-format-validator-interface
-- https://github.com/arslanim/iso-standard-3166
-- https://github.com/rocketfellows/tuple
+- https://github.com/rocketfellows/country-vat-format-validator-interface v1.1.0
+- https://github.com/arslanim/iso-standard-3166 v1.0.2
+- https://github.com/rocketfellows/tuple v1.0.0
 
 ## List of package components
 
