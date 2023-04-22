@@ -6,16 +6,16 @@ jobs:
   run-phpcs:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: php-actions/composer@v5
+      - uses: actions/checkout@v3
+      - uses: php-actions/composer@v6
       - name: PHPCS analyze
         run: ./vendor/bin/phpcs -p -s --standard=phpcs.xml src tests
   run-php-stan:
     needs: run-phpcs
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: php-actions/composer@v5
+      - uses: actions/checkout@v3
+      - uses: php-actions/composer@v6
       - name: PHPStan Static Analysis source code
         uses: php-actions/phpstan@v3
         with:
@@ -24,8 +24,8 @@ jobs:
     needs: run-php-stan
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: php-actions/composer@v5
+      - uses: actions/checkout@v3
+      - uses: php-actions/composer@v6
       - uses: php-actions/phpunit@v3
         with:
           version: 9.5.28
@@ -36,8 +36,8 @@ jobs:
     needs: run-php-unit-tests
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: php-actions/composer@v5
+      - uses: actions/checkout@v3
+      - uses: php-actions/composer@v6
       - name: Run PHPUnit Tests
         uses: php-actions/phpunit@v3
         with:
